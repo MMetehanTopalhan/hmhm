@@ -1,0 +1,42 @@
+
+//SPDX-License-Identifier: MIT
+pragma solidity ^0.7.0;
+
+contract incsetdec{
+int public count = 0 ;
+uint64 public txCount;
+address contract_owner;
+
+constructor(){
+contract_owner == msg.sender;
+
+}
+
+function Increment() public {
+    count +=1;
+}
+function Decremnet()  incTx public {
+    count -=1;
+    // txCount;
+}
+ function setcount(int value) onlyOwner public {
+  // require(contract_owner == msg.sender, "You are not authorized.");
+     count = value;
+ }
+  
+   modifier incTx {
+        _;
+        txCount++;
+    }
+
+
+  modifier onlyOwner {
+        require(contract_owner == msg.sender, "You are not authorized.");
+        _;
+    }
+
+
+}
+
+
+
