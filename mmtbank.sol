@@ -33,3 +33,20 @@ contract Bank {
         fallbackCount += 1;
     }
 }
+
+
+    /*
+    Which function is called, fallback() or receive()?
+
+           send Ether
+               |
+         msg.data is empty?
+              / \
+            yes  no
+            /     \
+receive() exists?  fallback()
+         /   \
+        yes   no
+        /      \
+    receive()   fallback()
+    */
