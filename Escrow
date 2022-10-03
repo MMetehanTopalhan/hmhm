@@ -1,0 +1,43 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0; 
+
+
+contract Escrow {
+
+mapping (address =>uint) balances;
+address admin;
+uint commission_percent = 1;
+uint total_comission = 0;
+
+constructor(uint commission_percent){
+    admin = msg.sender;
+    commission_percent = commission_percent; 
+}
+
+function DepositEther() external payable {
+      require(msg.value >= 1 ether);
+      balances[msg.sender] += msg.value;
+  }
+
+function TransferEther(address receiver ,uint amount) external payable {
+    require(msg.sender == admin);
+    require(adrdresse(this).balance >= amount);
+    total_comission += amount * commission_percent;
+    user_balances[admin] += amount/100 * commission_percent;
+    payable(receiver).transfer(amount - amount/100 * commission_percent);
+  }  
+
+function CollectCommission()external payable{
+    require(msg.sender == admin);
+    require(admin).transfer(user_balances[admin]);
+    payable(admin).transfer(user_balances[admin]);
+  }
+
+function setAdmin(address newAdmin){ 
+require(msg.sender == admin);
+ require(newAdmin != addres(0));
+ admin  = newAdmin;
+
+  }
+  
+}
