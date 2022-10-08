@@ -1,6 +1,6 @@
 //SPDX-License-Identifier: UNLICENSED
 pragma solidity 0.8.0;
-
+// I understand, I read, I analyze
 contract EscrowApp2 {
     mapping (uint => address) transaction_receivers_list; //links a transaction id to its receiver
     mapping (uint => address) transaction_owners_list; //links a transaction id to its owner
